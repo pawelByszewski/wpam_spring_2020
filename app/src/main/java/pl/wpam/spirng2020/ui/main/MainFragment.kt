@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.main_fragment.*
 import pl.wpam.spirng2020.R
 
@@ -23,15 +24,13 @@ class MainFragment : Fragment() {
 
     }
 
-    var counterValue = 0;
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        counter.text = counterValue.toString()
-        add_button.setOnClickListener {
-            counter.text = (++counterValue).toString()
-        }
+        viewModel.counter.observe(this, Observer {
+            counter.text = it.toString()
+        })
+        add_button.setOnClickListener { viewModel.increase() }
     }
 
 }
