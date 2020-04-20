@@ -27,10 +27,10 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.counter.observe(this, Observer {
-            counter.text = it.toString()
+        viewModel.toDos.observe(this, Observer {
+            counter.text = it.fold("") { acc, item -> "$acc\n\n$item" }
         })
-        add_button.setOnClickListener { viewModel.increase() }
+        add_button.setOnClickListener { viewModel.addToDo() }
     }
 
 }
