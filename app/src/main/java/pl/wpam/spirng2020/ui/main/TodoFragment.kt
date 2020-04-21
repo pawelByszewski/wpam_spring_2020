@@ -18,7 +18,7 @@ class TodoFragment : Fragment() {
         fun newInstance() = TodoFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: TodoViewModel
     private val todoRecycleViewAdapter: TodoRecycleViewAdapter = TodoRecycleViewAdapter(listOf())
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class TodoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(TodoViewModel::class.java)
         viewModel.toDos.observe(this, Observer {
             todoRecycleViewAdapter.apply {
                 todos = it
