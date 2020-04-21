@@ -42,4 +42,9 @@ class TodoFragment : Fragment() {
             adapter = todoRecycleViewAdapter
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
 }

@@ -10,13 +10,15 @@ class TodoViewModel : ViewModel() {
 
     private val todoRepository: TodoRepository = TodoRepository
 
-    private val _toDos by lazy {
-        MutableLiveData<List<String>>().apply { value = todoRepository.fetchAll() }
-    }
+    private val _toDos = MutableLiveData<List<String>>()
     val toDos: LiveData<List<String>>
         get() = _toDos
 
     fun addToDo() {
         _toDos.value = todoRepository.add(UUID.randomUUID().toString())
+    }
+
+    fun onResume() {
+        _toDos.value = todoRepository.fetchAll()
     }
 }
