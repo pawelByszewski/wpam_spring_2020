@@ -12,10 +12,10 @@ import kotlinx.android.synthetic.main.main_fragment.*
 import pl.wpam.spirng2020.R
 import pl.wpam.spirng2020.ui.main.todo.TodoRecycleViewAdapter
 
-class MainFragment : Fragment() {
+class TodoFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = TodoFragment()
     }
 
     private lateinit var viewModel: MainViewModel
