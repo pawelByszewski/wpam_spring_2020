@@ -10,6 +10,7 @@ class MainViewModel : ViewModel() {
     private var toDosList  = mutableListOf<String>()
 
     private val _toDos = MutableLiveData<List<String>>().apply { value = toDosList }
+
     val toDos: LiveData<List<String>>
         get() = _toDos
 
