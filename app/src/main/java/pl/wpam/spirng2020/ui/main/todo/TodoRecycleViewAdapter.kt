@@ -3,14 +3,17 @@ package pl.wpam.spirng2020.ui.main.todo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import pl.wpam.spirng2020.R
+import pl.wpam.spirng2020.repository.Todo
 
-class TodoRecycleViewAdapter(var todos: List<String>) : RecyclerView.Adapter<TodoRecycleViewAdapter.ViewHolder>() {
+class TodoRecycleViewAdapter(var todos: List<Todo>, val doneListener: (Todo) -> Unit) : RecyclerView.Adapter<TodoRecycleViewAdapter.ViewHolder>() {
 
     class ViewHolder(cardView: View) : RecyclerView.ViewHolder(cardView) {
         val title: TextView = itemView.findViewById<TextView>(R.id.todo_title)
+        val doneButton = itemView.findViewById<ImageButton>(R.id.done_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,7 +25,9 @@ class TodoRecycleViewAdapter(var todos: List<String>) : RecyclerView.Adapter<Tod
     override fun getItemCount(): Int = todos.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.title.text = todos[position]
+        todos[position].apply {
+            holder.title.text = title
+            holder.doneButton.setOnClickListener { doneListener(this) }
+        }
     }
-
 }

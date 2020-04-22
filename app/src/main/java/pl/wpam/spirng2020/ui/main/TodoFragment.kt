@@ -19,7 +19,7 @@ class TodoFragment : Fragment() {
     }
 
     private lateinit var viewModel: TodoViewModel
-    private val todoRecycleViewAdapter: TodoRecycleViewAdapter = TodoRecycleViewAdapter(listOf())
+    private val todoRecycleViewAdapter: TodoRecycleViewAdapter = TodoRecycleViewAdapter(listOf(), { viewModel.done(it) })
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
