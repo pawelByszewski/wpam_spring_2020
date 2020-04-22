@@ -18,6 +18,8 @@ object TodoRepository {
 
     fun fetchTodo(): List<Todo> = toDosList.filter { !it.done }
 
+    fun fetchDone(): List<Todo> = toDosList.filter { it.done }
+
     fun markAsDone(todo: Todo) {
         toDosList
             .find { it.id == todo.id }

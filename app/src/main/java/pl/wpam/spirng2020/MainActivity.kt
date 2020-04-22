@@ -9,6 +9,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 import kotlinx.android.synthetic.main.main_activity.*
+import pl.wpam.spirng2020.ui.main.DoneFragment
 import pl.wpam.spirng2020.ui.main.TodoFragment
 
 class MainActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ internal class DemoCollectionAdapter(fragment: FragmentActivity?) :
         return if (position == 0) {
             TodoFragment()
         } else {
-            TodoFragment()
+            DoneFragment()
         }
     }
 
