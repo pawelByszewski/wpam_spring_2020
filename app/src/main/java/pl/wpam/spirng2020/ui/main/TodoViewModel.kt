@@ -16,7 +16,8 @@ class TodoViewModel : ViewModel() {
         get() = _toDos
 
     fun addToDo() {
-        _toDos.value = todoRepository.add(UUID.randomUUID().toString())
+        todoRepository.add(UUID.randomUUID().toString())
+        refreshTodos()
     }
 
     fun onResume() {
